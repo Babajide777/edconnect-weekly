@@ -13,29 +13,26 @@ class Project {
 }
 
 class Projects extends DataModel {
+
     validate(obj) {
         // The authors and tags properties are arrays
         // Validate that the none of the provided properties are empty
         // The method should return true if all of the tests pass and false otherwise
         let sta1 = true;
         for (const item in obj) {
-            if (obj[item] === undefined || obj[item] === null) {
+            if (!obj[item] || obj[item] === null) {
                 sta1 = false;
             }
         }
-
         let arrayAuthors = Array.isArray(obj.authors);
         let arrayTags = Array.isArray(obj.tags);
-
-        if (arrayAuthors === true && arrayTags === true) {
-            if (sta1 === true) {
-                return true;
-            }
+        if (arrayAuthors && arrayTags && sta1) {
+            return true
         }
         return false;
-
         //return ((sta1 === false && arrayAuthors && arrayTags) ? true : false);
     }
+
 }
 
 
