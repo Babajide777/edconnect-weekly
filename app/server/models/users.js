@@ -79,8 +79,16 @@ class Users extends DataModel {
 
         let passCheck = obj.password.length >= 7 ? true : false;
 
-        return ((passCheck && valEmail && valMatric && value) ? true : false);
+        if (passCheck === true && value === true) {
+            if (valEmail === false || valEmail === undefined) {
+                if (valMatric == false || valMatric == undefined) {
+                    return true;
+                }
+            }
+        }
+        return false;
 
+        // return ((passCheck && valEmail === false && valMatric === false && value) ? true : false);
 
     }
 }

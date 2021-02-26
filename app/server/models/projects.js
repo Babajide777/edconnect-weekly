@@ -24,10 +24,17 @@ class Projects extends DataModel {
             }
         }
 
-        let arrayAuthors = Array.isArray(obj[authors]);
-        let arrayTags = Array.isArray(obj[tags]);
+        let arrayAuthors = Array.isArray(obj.authors);
+        let arrayTags = Array.isArray(obj.tags);
 
-        return ((sta1 && arrayAuthors && arrayTags) ? true : false);
+        if (arrayAuthors === true && arrayTags === true) {
+            if (sta1 === true) {
+                return true;
+            }
+        }
+        return false;
+
+        //return ((sta1 === false && arrayAuthors && arrayTags) ? true : false);
     }
 }
 

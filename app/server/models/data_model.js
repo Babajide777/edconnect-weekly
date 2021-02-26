@@ -32,7 +32,7 @@ class DataModel {
         //This should return false if no object with the specified id was found in the data array
         let user = this.data.find(item => item.id === id);
         if (user) {
-            for (item in obj) {
+            for (const item in obj) {
                 user[item] = obj[item];
             }
             return true;
