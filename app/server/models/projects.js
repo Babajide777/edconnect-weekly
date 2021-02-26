@@ -17,31 +17,17 @@ class Projects extends DataModel {
         // The authors and tags properties are arrays
         // Validate that the none of the provided properties are empty
         // The method should return true if all of the tests pass and false otherwise
-
-        let sta1 = true;;
-
+        let sta1 = true;
         for (const item in obj) {
-            if (obj[item] === undefined) {
+            if (obj[item] === undefined || obj[item] === null) {
                 sta1 = false;
             }
         }
 
+        let arrayAuthors = Array.isArray(obj[authors]);
+        let arrayTags = Array.isArray(obj[tags]);
 
-        let arrayAuthors = obj.find(item => {
-            item.authors.isArray();
-        });
-
-        let arrayTags = obj.find(item => {
-            item.tags.isArray();
-        });
-
-        if (sta1 && arrayAuthors && arrayTags) {
-            return true;
-
-        }
-
-        return false;
-
+        return ((sta1 && arrayAuthors && arrayTags) ? true : false);
     }
 }
 

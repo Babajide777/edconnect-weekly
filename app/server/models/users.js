@@ -69,7 +69,7 @@ class Users extends DataModel {
         let value = true
 
         for (const prop in obj) {
-            if (obj[prop] === undefined) {
+            if (obj[prop] === undefined || obj[prop] === null) {
                 value = false;
             }
         }
@@ -79,7 +79,7 @@ class Users extends DataModel {
 
         let passCheck = obj.password.length >= 7 ? true : false;
 
-        return (passCheck && valEmail && valMatric && value ? true : false);
+        return ((passCheck && valEmail && valMatric && value) ? true : false);
 
 
     }
