@@ -8,6 +8,13 @@ class DataModel {
     }
 
     getById(id) {
+        // This should return the object with the specified id if such an object exists
+        // This should return null if no object with the specified id was found
+        let user = this.data.find(obj => {
+            return obj.id === id;
+        });
+
+        return (user ? user : null);
 
     }
 
@@ -20,10 +27,33 @@ class DataModel {
     }
 
     update(obj, id) {
-
+        //The update method updates the properties of an object in the data array with the specified id
+        //This should return true if an object with the specified id was found
+        //This should return false if no object with the specified id was found in the data array
+        let user = this.data.find(item => item.id === id);
+        if (user) {
+            for (item in obj) {
+                user[item] = obj[item];
+            }
+            return true;
+        }
+        return false;
     }
 
     delete(id) {
+
+        //The delete method deletes the object with the specified id
+        //This should return true if an object with the specified id was found in the array and deleted
+        //This should return false if no object with the specified id was found
+
+        let user = this.data.find(item => item.id === id);
+
+        let index = this.data.indexOf(user);
+        if (user) {
+            this.data.splice(index, 1);
+            return true;
+        }
+        return false;
 
     }
 
